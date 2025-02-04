@@ -1,0 +1,22 @@
+name: Daily Commit
+
+on:
+  schedule:
+    - cron: '0 9 * * *'
+
+jobs:
+  commit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Sailesh.G@gramener.com
+        run: |
+          echo "This is a commit added by the GitHub Action" >> daily_commit.txt
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "sailesh.g@gramener.com"
+          git add daily_commit.txt
+          git commit -m "Daily commit"
+          git push
+
